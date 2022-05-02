@@ -1,0 +1,30 @@
+﻿@await Html.PartialAsync("_accSideBar")
+@model IEnumerable<Post>
+    <style>
+        p {
+            word-break: break-all;
+        }
+    </style>
+@foreach (var item in Model)
+      {
+        <div class="row py-1">
+            <div class="col-sm-3">
+                <a asp-controller="Home" asp-action="Post" asp-route-id="@item.Id"><img src="@(item.Images.FirstOrDefault().Path)" width="220" height="120" /></a>
+            </div>
+            <div class="col-sm-9 text-left">
+                <h5>
+                    @item.Title
+                </h5>
+                <p>
+                    @if (item.LongDesc.Count() >= 300)
+                    {
+                        @item.LongDesc.Substring(0, 300);
+                    }
+                    else
+                    {
+                        @item.LongDesc;
+                    }
+                </p>
+            </div>
+        </div>
+      }

@@ -1,0 +1,57 @@
+﻿@model RegisterViewModel
+<style>
+        form {
+            width: 400px;
+            height: 510px;
+            border: 5px solid;
+            border-radius: 10px 20px;
+            margin: auto
+        }
+        div {
+            text-align:left;
+        }
+    </style>
+<h2 class="text-center">Регистрация</h2>
+    <form asp-action="Register" asp-controller="Account" asp-antiforgery="true" method="post">
+        <div class="px-2">
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="FirstName">Введите имя</label><br />
+                <input asp-for="FirstName" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="LastName">Введите фамилию</label><br />
+                <input asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Login">Придумайте логин</label><br />
+                <input asp-for="Login" />
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Password">Придумайте пароль</label><br />
+                <input asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="ConfirmPassword">Повторите пароль</label><br />
+                <input asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Age">Возраст</label><br />
+                <input asp-for="Age" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Email">Ваша почта</label><br />
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="py-3 text-center">
+                <input type="submit" class="btn btn-outline-dark" value="Регистрация" />
+            </div>
+        </div>
+    </form>

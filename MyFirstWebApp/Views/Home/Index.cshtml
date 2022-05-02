@@ -1,0 +1,56 @@
+﻿@model HomeIndexViewModel
+
+<style>
+    p {
+        word-break: break-all;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Все посты: </h3>
+    </div>
+    <div class="col-sm-8 text-sm-right">
+        <a asp-route-sortOrder="@(Model.SortViewModel.DateSort)" class="btn btn-link">Дата @ViewBag.Date</a>
+        <a asp-route-sortOrder="@(Model.SortViewModel.LikesSort)" class="btn btn-link">По количеству добавленных в избранное @ViewBag.Like</a>
+    </div>
+</div>
+@foreach (var post in Model.Posts)
+{
+    <div class="row my-3">
+        <div class="col-sm-8">
+            <a href="Home/Post/@post.Id">@post.Title</a>
+            <p>@post.ShortDesc</p>
+            @if (post.LongDesc.Length < 350)
+            {
+                <p class="font-weight-light text-left">@post.LongDesc</p>
+            }
+            @if (post.LongDesc.Length >= 350)
+            {
+                <p class="font-weight-light text-left">@post.LongDesc.Substring(0, 350)<a href="~/Home/Post/@post.Id">...</a></p>
+            }
+        </div>
+        <div class="col-sm-4">
+            <img src="@post.Images.FirstOrDefault().Path" width="400" height="260" class="img-thumbnail" />
+        </div>
+    </div>
+}
+@if (Model.PageViewModel.HasPreviosPage)
+{
+    <a asp-controller="Home" asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber-1)"
+       asp-route-sortOrder="@(Model.SortViewModel.CurrentState)" class="btn btn-light">Назад</a>
+}
+
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-controller="Home" asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber+1)"
+       asp-route-sortOrder="@(Model.SortViewModel.CurrentState)" class="btn btn-light">Вперед</a>
+}
+
+
+
+
+
+
+

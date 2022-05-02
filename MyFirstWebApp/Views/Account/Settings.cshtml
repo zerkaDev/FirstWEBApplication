@@ -1,0 +1,16 @@
+﻿@await Html.PartialAsync("_accSideBar")
+@model User
+<div class="text-md-center">
+    <div class="hide py-2">
+        <input readonly value="@Model.FirstName" />
+    </div>
+    <div class="hide py-2">
+        <input readonly value="@Model.LastName" />
+    </div>
+    <div class="hide py-2">
+        <input readonly value="@Model.Age" />
+    </div>
+    <div class="hide py-2">
+        <input readonly value="@Model.Login" />
+    </div>
+</div>

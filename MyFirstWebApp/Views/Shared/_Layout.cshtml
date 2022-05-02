@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Главная</title>
+    <style>
+        a.active{
+            text-decoration: underline;
+        }
+        a:hover.notactive{
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<header>
+    <nav class="navbar navbar-light bg-light justify-content-center">
+        <a asp-action="Index" asp-controller="Home" class="active navbar-brand">Главная</a>
+        <a asp-action="Login" asp-controller="Account" class="navbar-brand notactive">Авторизация</a>
+        <a asp-action="Settings" asp-controller="Account" class="text-right"><img src="~/userStand.png" width="50" height="50"/></a>
+    </nav>
+</header>
+<body class="bg-light">
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <p class="text-center">Все права защищены, по вопросам <a href="">bruh@mail.ru </a></p>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>

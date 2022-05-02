@@ -1,0 +1,36 @@
+﻿@model Post
+    <style>
+        p {
+            word-break: break-all;
+        }
+    </style>
+    <div class="row">
+        <div class="col-lg-6">
+            <title>@Model.Title</title>
+            <h2>@Model.Title</h2>
+            <h3>@Model.ShortDesc</h3>
+        </div>
+        @if (ViewBag.IsLiked)
+        {
+            <div class="col-lg-6 text-lg-center">
+                <a class="btn btn-light" disabled>Уже в избранном</a>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-6 text-lg-center">
+                <a class="btn btn-light" asp-controller="Home" asp-action="AddFavPost" asp-route-id="@Model.Id">Добавить в избранное</a>
+            </div>
+        }
+    </div>
+    <div class="row my-3">
+        <div class="col-sm-6">
+            <p class="font-weight-light text-left">@Model.LongDesc</p>
+        </div>
+        <div class="col-sm-6">
+            @foreach (var imgpath in Model.Images)
+            {<img src="@imgpath.Path" width="400" height="260" class="img-thumbnail" />}
+        </div>
+            <div class="col-sm-6"><p class="font-weight-light"><p class="font-weight-bold">@Model.User.FirstName @Model.User.LastName</p> @Model.Created.ToShortDateString()</p></div>
+            <div class="col-sm-6 text-sm-right py-4">Количество добавленных в избранное: @ViewBag.LikesCount</div>
+    </div>
